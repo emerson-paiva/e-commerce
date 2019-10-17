@@ -17,6 +17,5 @@ const MenuItem = ({ title, imageUrl, size }) => (
   </div>
 );
 
-// ADD PropTypes
-
+// TODO ADD PropTypes
 export default MenuItem;
