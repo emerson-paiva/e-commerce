@@ -5,7 +5,7 @@ import MenuItem from '../MenuItem/MenuItem';
 import './Directory.scss';
 
 function Directory() {
-  const [sections, setSections] = useState([
+  const [sections] = useState([
     {
       title: 'hats',
       imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -43,7 +43,12 @@ function Directory() {
   return (
     <div className='directory-menu'>
       {sections.map(({ id, title, imageUrl, size }) => (
-        <MenuItem title={title} key={id} imageUrl={imageUrl} size={size} />
+        <MenuItem
+          title={title.toUpperCase()}
+          key={id}
+          imageUrl={imageUrl}
+          size={size}
+        />
       ))}
     </div>
   );
