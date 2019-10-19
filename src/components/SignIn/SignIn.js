@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import FormInput from '../FormInput';
+import Button from '../Button';
 
 import './SignIn.scss';
 
@@ -51,7 +52,7 @@ function SignIn() {
           required
         />
 
-        <input type='submit' value='Submit form' />
+        <Button type='submit'>Sign In</Button>
       </form>
     </div>
   );
