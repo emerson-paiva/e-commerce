@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Home from './pages/Home/Home';
-import Shop from './pages/Shop/Shop';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import SignInSignUp from './pages/SignInSignUp';
 import Header from './components/Header';
 
 function Routes() {
@@ -12,6 +13,7 @@ function Routes() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/shop' exact component={Shop} />
+        <Route path='/signin' exact component={SignInSignUp} />
       </Switch>
     </BrowserRouter>
   );
