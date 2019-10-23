@@ -2,6 +2,8 @@ import React from 'react';
 
 import './SignUp.scss';
 
-function SignUp() {}
+function SignUp() {
+  <return>SingUp</return>;
+}
 
 export default SignUp;
