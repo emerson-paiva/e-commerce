@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import FormInput from '../FormInput';
 import Button from '../Button';
 
+import { signInWithGoogle } from '../../firebase/FirebaseUtils';
+
 import './SignIn.scss';
 
 function SignIn() {
@@ -53,6 +55,7 @@ function SignIn() {
         />
 
         <Button type='submit'>Sign In</Button>
+        <Button onClick={signInWithGoogle}>Sign In With Google</Button>
       </form>
     </div>
   );
