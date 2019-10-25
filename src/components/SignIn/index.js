@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import FormInput from '../FormInput';
 import Button from '../Button';
 
-import { signInWithGoogle } from '../../firebase/FirebaseUtils';
+import { auth, signInWithGoogle } from '../../firebase/FirebaseUtils';
 
 import './SignIn.scss';
 
@@ -13,8 +13,16 @@ function SignIn() {
     password: '',
   });
 
-  const handlerSubmit = event => {
+  const handlerSubmit = async event => {
     event.preventDefault();
+
+    const { email, password } = login;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.error(error);
+    }
 
     setLogin({
       email: '',
