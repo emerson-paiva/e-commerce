@@ -31,7 +31,7 @@ function Routes(props) {
     return () => {
       unsubscribeFromAuth();
     };
-  }, []);
+  });
 
   return (
     <BrowserRouter>
