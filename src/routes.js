@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import SignInSignUp from './pages/SignInSignUp';
 import Header from './components/Header';
+
 import { auth, createUserProfileDocument } from './firebase/FirebaseUtils';
+import { setCurrentUser } from './redux/user/UserActions';
 
-function Routes() {
-  const [currentUser, setCurrentUser] = useState(null);
-
+function Routes(props) {
   useEffect(() => {
+    const { setCurrentUser } = props;
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -33,7 +35,7 @@ function Routes() {
 
   return (
     <BrowserRouter>
-      <Header currentUser={currentUser} />
+      <Header />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/shop' exact component={Shop} />
@@ -43,4 +45,11 @@ function Routes() {
   );
 }
 
-export default Routes;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Routes);
