@@ -2,10 +2,12 @@ import React from 'react';
 
 import './Button.scss';
 
-function Button({ children, isGoogleSignIn, ...otherProps }) {
+function Button({ children, isGoogleSignIn, isInverted, ...otherProps }) {
   return (
     <button
-      className={`btn ${isGoogleSignIn ? 'btn--google' : ''}`}
+      className={`btn
+        ${isGoogleSignIn && 'btn--google'}
+        ${isInverted && 'btn--inverted'}`}
       {...otherProps}
     >
       {children}
