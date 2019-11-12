@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentUser } from '../../redux/user/UserSelectors';
 import { selectCartHidden } from '../../redux/cart/CartSelectors';
@@ -42,9 +43,9 @@ function Header({ currentUser, hidden }) {
   );
 }
 
-const mapStateToProps = state => ({
-  currentUser: selectCurrentUser(state),
-  hidden: selectCartHidden(state),
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Header);
