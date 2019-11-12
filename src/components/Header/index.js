@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { selectCurrentUser } from '../../redux/user/UserSelectors';
+import { selectCartHidden } from '../../redux/cart/CartSelectors';
+
 import { auth } from '../../firebase/FirebaseUtils';
 import CartDropdown from '../CartDropdown';
 import CartIcon from '../CartIcon';
@@ -39,9 +42,9 @@ function Header({ currentUser, hidden }) {
   );
 }
 
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden,
+const mapStateToProps = state => ({
+  currentUser: selectCurrentUser(state),
+  hidden: selectCartHidden(state),
 });
 
 export default connect(mapStateToProps)(Header);

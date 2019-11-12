@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './App.css';
+import { auth, createUserProfileDocument } from './firebase/FirebaseUtils';
+
+import { setCurrentUser } from './redux/user/UserActions';
+import { selectCurrentUser } from './redux/user/UserSelectors';
 
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import SignInSignUp from './pages/SignInSignUp';
 import Header from './components/Header';
 
-import { auth, createUserProfileDocument } from './firebase/FirebaseUtils';
-import { setCurrentUser } from './redux/user/UserActions';
+import './App.css';
 
 function App(props) {
   useEffect(() => {
@@ -52,8 +54,8 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = state => ({
+  currentUser: selectCurrentUser(state),
 });
 
 const mapDispatchToProps = dispatch => ({
