@@ -8,10 +8,12 @@ import { auth, createUserProfileDocument } from './firebase/FirebaseUtils';
 import { setCurrentUser } from './redux/user/UserActions';
 import { selectCurrentUser } from './redux/user/UserSelectors';
 
+import Header from './components/Header';
+
+import Checkout from './pages/Checkout';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import SignInSignUp from './pages/SignInSignUp';
-import Header from './components/Header';
 
 import './App.css';
 
@@ -43,6 +45,7 @@ function App(props) {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/shop' component={Shop} />
+        <Route path='/checkout' exact component={Checkout} />
         <Route
           path='/signin'
           exact
