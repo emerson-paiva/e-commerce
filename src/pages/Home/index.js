@@ -4,10 +4,12 @@ import Directory from '../../components/Directory';
 
 import './Home.scss';
 
+import { HomePageContainer } from './styled';
+
 const Home = () => (
-  <div className='homepage'>
+  <HomePageContainer>
     <Directory />
-  </div>
+  </HomePageContainer>
 );
 
 export default Home;
