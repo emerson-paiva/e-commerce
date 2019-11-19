@@ -10,7 +10,6 @@ function StripeCheckoutButton({ price }) {
     alert('Payment Successful');
   };
 
-  console.log(priceForStripe);
   return (
     <StripeCheckout
       label='Pay Now'

@@ -20,21 +20,15 @@ function Header({ currentUser, hidden }) {
         <Logo className='logo' />
       </S.LogoContainer>
       <S.OptionsContainer>
-        <S.OptionLink to='/shop'>
-          SHOP
-        </S.OptionLink>
-        <S.OptionLink to='/contact'>
-          CONTACT
-        </S.OptionLink>
+        <S.OptionLink to='/shop'>SHOP</S.OptionLink>
+        <S.OptionLink to='/contact'>CONTACT</S.OptionLink>
         {currentUser ? (
-          <S.OptionDiv onClick={() => auth.signOut()}>
+          <S.OptionLink as='div' onClick={() => auth.signOut()}>
             SIGN OUT
-          </S.OptionDiv>
-        ) : (
-            <S.OptionLink to='/signin' className='option'>
-              SIGN IN
           </S.OptionLink>
-          )}
+        ) : (
+          <S.OptionLink to='/signin'>SIGN IN</S.OptionLink>
+        )}
         <CartIcon />
       </S.OptionsContainer>
       {!hidden && <CartDropdown />}

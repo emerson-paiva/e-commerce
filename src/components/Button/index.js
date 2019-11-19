@@ -1,18 +1,9 @@
 import React from 'react';
 
-import './Button.scss';
+import * as S from './styled';
 
-function Button({ children, isGoogleSignIn, isInverted, ...otherProps }) {
-  return (
-    <button
-      className={`btn
-        ${isGoogleSignIn && 'btn--google'}
-        ${isInverted && 'btn--inverted'}`}
-      {...otherProps}
-    >
-      {children}
-    </button>
-  );
+function Button({ children, ...props }) {
+  return <S.Button {...props}>{children}</S.Button>;
 }
 
 export default Button;
