@@ -37,7 +37,7 @@ function App(props) {
     });
 
     return () => unsubscribeFromAuth();
-  }, []);
+  }, [props]);
 
   return (
     <BrowserRouter>
