@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, {useEffect} from 'react';
+import {Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-import { fetchCollectionsStart } from '../../redux/shop/actions';
+import {fetchCollectionsStart} from '../../redux/shop/actions';
 
 import CollectionsOverviewContainer from '../../components/CollectionsOverview/container';
 import CollectionContainer from '../Collection/container';
 
 import './Shop.scss';
 
-function Shop({ match, fetchCollectionsStart }) {
+function Shop({match, fetchCollectionsStart}) {
   useEffect(() => {
     fetchCollectionsStart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,7 +30,7 @@ function Shop({ match, fetchCollectionsStart }) {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import FormInput from '../FormInput';
 import Button from '../Button';
 
-import { auth, signInWithGoogle } from '../../firebase/FirebaseUtils';
+import {auth, signInWithGoogle} from '../../firebase/FirebaseUtils';
 
 import './SignIn.scss';
 
@@ -13,10 +13,10 @@ function SignIn() {
     password: '',
   });
 
-  const handlerSubmit = async event => {
+  const handlerSubmit = async (event) => {
     event.preventDefault();
 
-    const { email, password } = login;
+    const {email, password} = login;
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
@@ -30,8 +30,8 @@ function SignIn() {
     });
   };
 
-  const handlerChange = event => {
-    const { value, name } = event.target;
+  const handlerChange = (event) => {
+    const {value, name} = event.target;
 
     setLogin({
       ...login,
@@ -64,7 +64,7 @@ function SignIn() {
 
         <div className='buttons'>
           <Button type='submit'>Sign In</Button>
-          <Button onClick={signInWithGoogle} isGoogleSignIn>
+          <Button type='button' onClick={signInWithGoogle} isGoogleSignIn>
             Sign In With Google
           </Button>
         </div>

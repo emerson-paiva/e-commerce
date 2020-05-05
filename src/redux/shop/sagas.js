@@ -1,11 +1,11 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import {takeEvery, call, put} from 'redux-saga/effects';
 
 import {
   firestore,
   convertCollectionsSnapshotToMap,
 } from '../../firebase/FirebaseUtils';
 
-import { fetchCollectionsSuccess, fetchCollectionsFailure } from './actions';
+import {fetchCollectionsSuccess, fetchCollectionsFailure} from './actions';
 
 import ShopActionTypes from './types';
 
@@ -18,7 +18,6 @@ export function* fetchCollectionsAsync() {
       snapshot
     );
 
-    // PUT = dispatch actions
     yield put(fetchCollectionsSuccess(collectionsMap));
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message));
