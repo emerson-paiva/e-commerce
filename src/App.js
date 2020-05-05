@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, {useEffect} from 'react';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
-import { auth, createUserProfileDocument } from './firebase/FirebaseUtils';
+import {auth, createUserProfileDocument} from './firebase/FirebaseUtils';
 
-import { setCurrentUser } from './redux/user/UserActions';
-import { selectCurrentUser } from './redux/user/UserSelectors';
+import {setCurrentUser} from './redux/user/UserActions';
+import {selectCurrentUser} from './redux/user/UserSelectors';
 
 import Header from './components/Header';
 
@@ -19,24 +19,8 @@ import './App.css';
 
 function App(props) {
   useEffect(() => {
-    const { setCurrentUser } = props;
+    const {setCurrentUser} = props;
 
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-
-        userRef.onSnapshot(snapshot => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      } else {
-        setCurrentUser(null);
-      }
-    });
-
-    return () => unsubscribeFromAuth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -63,8 +47,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user)),
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

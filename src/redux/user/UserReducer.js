@@ -1,19 +1,29 @@
-import { UserActionTypes } from './UserTypes';
+import UserActionTypes from './UserTypes';
 
 const INITIAL_STATE = {
   currentUser: null,
+  error: null,
 };
 
 // every reducer get all actions that are fired, even if is not destined to this reducer itself
 const userReducer = (state = INITIAL_STATE, action) => {
-  if (action.type === UserActionTypes.SET_CURRENT_USER) {
-    return {
-      ...state,
-      currentUser: action.payload,
-    };
+  switch (action.type) {
+    case UserActionTypes.GOOGLE_SIGN_IN_SUCCESS:
+    case UserActionTypes.EMAIL_SIGN_IN_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload,
+        error: null,
+      };
+    case UserActionTypes.GOOGLE_SIGN_IN_FAILURE:
+    case UserActionTypes.EMAIL_SIGN_IN_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    default:
+      return state;
   }
-
-  return state;
 };
 
 export default userReducer;
